@@ -18,24 +18,29 @@ console.log(esPar(2)) // "Es par"
 console.log(esPar(3)) // "No es par"
 
 
-//EJEMPLO DEL EJERCICIO DEL JUEGO USANDO IF 
+//EJEMPLO DEL JUEGO "PIEDRA, PAPEL O TIJER" USANDO IF 
 let op1 = "Piedra";  
 let op2 = "Papel";
 let op3 = "Tijera";
 
-function game(miJuego) {
-    let maquina = parseInt(Math.random()*3)+1; //1 piedra, 2 papel, 3 tijera.
-    console.log(maquina);
+let opcionesMaquina = ["Piedra", "Papel", "Tijera"];
+let maquina = opcionesMaquina[Math.floor(Math.random() * 3)]; 
+console.log(maquina);
 
-    if (miJuego === op1 && maquina === 1 || miJuego === op2 && maquina === 2 || miJuego === op3 && maquina === 3) {
+function game(miJuego) {
+
+    if (miJuego === maquina) {
         return "Es un Empate";
-    }else if (miJuego === op1 && maquina === 3 || miJuego === op2 && maquina === 1 || miJuego === op3 && maquina === 2) {
+    }else if (miJuego === op1 && maquina === op3) {
         return "Haz Ganado";
-    }else {
+    }else if(miJuego === op2 && maquina === op1){
+        return "Haz Ganado";
+    }else if (miJuego === op3 && maquina === op2) {
+        return "Haz Ganado";
+    }
+    else {
         return "Haz Perdido";
     }
 }
-
-
 let resultado = game(op1);
 console.log(resultado);
